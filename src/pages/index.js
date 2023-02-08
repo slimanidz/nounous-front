@@ -18,9 +18,9 @@ const Home = () => {
     state: { session1 },
   } = useAppContextNounou()
   return (
-    <div className=" h-screen">
+    <div className=" h-screen flex flex-col ">
       <Header />
-      <div className=" flex flex-col p-3 items-cente">
+      <div className=" flex flex-col p-3 items-cente grow overflow-y-auto">
         {/* {session ? <p>{session.user.email}</p> : null}
         {session1 ? <p>{session1.nounou.email}</p> : null} */}
         <div className="bg-red-300 relative">
@@ -46,7 +46,7 @@ const Home = () => {
               href="https://www.assistante-maternelle.biz/assistante-maternelle/lettre-type.html"
               className="bg-blue-70 hover:bg-blue-300 text-whit rounded-xl font-bold md:text-2xl p-2"
             >
-              Documetations
+              Documentations
             </Link>
           </div>
         </div>
@@ -77,7 +77,7 @@ const Home = () => {
         {!session1 ? (
           <div>
             <NounousGet />
-            <Link href="/test">upload</Link>
+            {/* <Link href="/test">upload</Link> */}
           </div>
         ) : null}
         {session1 ? (
@@ -86,7 +86,7 @@ const Home = () => {
           </div>
         ) : null}
       </div>
-      <Footer />
+      <Footer className="sticky bottom-0" />
     </div>
   )
 }

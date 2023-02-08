@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { BiHome, BiCog } from "react-icons/bi"
-import { FaCar } from "react-icons/fa"
+import { FcReadingEbook } from "react-icons/fc"
 import { ImStatsBars } from "react-icons/im"
 
 const Footer = () => {
@@ -12,8 +12,8 @@ const Footer = () => {
         </Link>{" "}
       </h1>
       <h1 className="">
-        <Link href="/page1">
-          <FaCar className="w-[40px] h-[40px] pt-2" />
+        <Link href="/book-bebe">
+          <FcReadingEbook className="w-[50px] h-[50px] pt-2" />
         </Link>{" "}
       </h1>
       <h1 className=" font-bold">
