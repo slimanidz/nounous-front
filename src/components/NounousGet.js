@@ -112,7 +112,7 @@ const NounousGet = () => {
   }
 
   return (
-    <div className=" overflow-y-auto ">
+    <div className=" overflow-y-auto flex flex-col items-center ">
       <div className=" flex  justify-center my-5">
         {/* <h1 className=" text-center  text-2xl ">LIST OF nounous</h1> */}
         <div>
@@ -136,7 +136,7 @@ const NounousGet = () => {
           </Formik>
         </div>
       </div>
-      <ul className=" bg-red-30">
+      <ul className="  bg-red-30 md:w-[75%]">
         {nounous.map((nounou) => (
           <li
             className=" flex justify-between  odd:bg-slate-200 rounded-xl"
@@ -197,7 +197,12 @@ const NounousGet = () => {
         {session || session1 ? (
           <div>
             <div className="w-full flex justify-end">
-              <button onClick={onClose}>X</button>
+              <button
+                className="p-2 bg-blue-700 active:bg-blue-300 text-white text-3xl font-bold rounded-xl"
+                onClick={onClose}
+              >
+                X
+              </button>
             </div>
 
             <div className="flex flex-col items-center gap-5 mt-20">
@@ -229,7 +234,12 @@ const NounousGet = () => {
         ) : (
           <div className="bg-slate-50 w-80 h-80  shadow-lg shadow-black ">
             <div className="w-full flex justify-end">
-              <button onClick={onClose}>X</button>
+              <button
+                className="p-2 bg-blue-700 active:bg-blue-300 text-white text-3xl font-bold rounded-xl"
+                onClick={onClose}
+              >
+                X
+              </button>
             </div>
             <div className="flex flex-col items-center justify-center gap-5 p-5">
               <p className="text-center">
@@ -238,7 +248,7 @@ const NounousGet = () => {
               </p>
               <Link
                 className="bg-blue-600 active:bg-blue-300 rounded-xl p-2 text-white font-bold"
-                href="/sign-up"
+                href="/connexion"
               >
                 connecter
               </Link>
@@ -247,10 +257,10 @@ const NounousGet = () => {
         )}
       </Modal>
       <Modal
-        className="w-screen h-screen bg-slate-50 flex justify-center items-center"
+        className="w-screen h-screen bg-slate-5 flex justify-center items-center"
         open={openModalServices}
       >
-        <div className="bg-slate-100 p-5  shadow-lg shadow-black ">
+        <div className="md:w-96 bg-slate-300  p-5  shadow-lg shadow-black ">
           <div className="w-full flex justify-end">
             <button
               className="p-2 bg-blue-700 active:bg-blue-300 text-white text-3xl font-bold rounded-xl"

@@ -48,7 +48,7 @@ const ModalComments = (props) => {
     <>
       <div
         className={classNames(
-          "fixed inset-0 w-full  flex flex-col object- h-screen overflow-auto rounded-md border-2 border-indigo-600   ",
+          "fixed inset-0 w-full  flex flex-col object- h-screen overflow-auto    ",
           className
         )}
       >
@@ -59,11 +59,18 @@ const ModalComments = (props) => {
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
-            <Form className="flex flex-col gap-3 justify-cente items-cente">
+            <Form className=" flex flex-col items-center gap-3">
               <div className="flex flex-col">
-                <h1 className="p-4 text-3xl font-bold ">
-                  Laisser un commentaire pour votre nounou
-                </h1>
+                {session ? (
+                  <h1 className="p-4 text-3xl font-bold ">
+                    Laisser un commentaire pour votre nounou
+                  </h1>
+                ) : (
+                  <h1 className="p-4 text-3xl font-bold ">
+                    Vous pouvez connecter pour laisser un commentaire
+                  </h1>
+                )}
+
                 <label>content *:</label>
                 <Field
                   as="textarea"
@@ -81,20 +88,16 @@ const ModalComments = (props) => {
               {session ? (
                 <button
                   type="submit"
-                  className="p-2 text font-bold text-white bg-blue-500 active:bg-blue-400 rounded"
+                  className=" p-2 text font-bold text-white bg-blue-500 active:bg-blue-400 rounded"
                 >
                   envoyer
                 </button>
               ) : (
                 <Link
                   href="/sign-up"
-                  className="p-2 text-center font-bold text-white bg-blue-500 active:bg-blue-400 rounded"
+                  className=" p-2 text-center font-bold text-white bg-blue-500 active:bg-blue-400 rounded"
                 >
-                  Vous pouvez pas commenter!
-                  <span className="text-red-900 text-xl pl-2 font-bold bg-red-30">
-                    Connecter
-                  </span>{" "}
-                  pour commneter?
+                  Connecter ?
                 </Link>
               )}
             </Form>

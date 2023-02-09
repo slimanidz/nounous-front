@@ -70,7 +70,7 @@ const Header = () => {
         </div>
       ) : (
         <h1 className=" font-bold  px-4 pt-2 border-b-2">
-          <Link href="/conexion">
+          <Link href="/connexion">
             <AiOutlineUser className="w-[35px] h-[35px]" />
           </Link>{" "}
         </h1>

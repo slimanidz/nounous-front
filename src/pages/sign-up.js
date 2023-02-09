@@ -10,6 +10,7 @@ import Link from "next/link"
 import api from "../services/api"
 import validationSchema from "../components/Validateur"
 import ImageSrc from "../components/ImageSrc"
+import Page from "../components/Page"
 // import validationSchema from "@/components/Validateur";
 // import Button from "@/components/Button";
 // import Footer from "@/components/Footer";
@@ -76,25 +77,26 @@ const SignUp = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className=" flex flex-col grow items-center bg-gradient-to-b from-gray-100 to-gray-500  rounded-md border-2 border-indigo-600 ">
-        <div className=" py-10">
-          <ImageSrc src="/logo/logo-nounous.png" className="w-48 h-15" />
-        </div>
-        <div>
-          <div className="text-center">
-            <h1 className="text-center text-4xl font-bold mb-5  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-900 ">
-              Sign-Up
-            </h1>
-            <p>
-              deja inscrit?{" "}
-              <Link className="hover:underline font-bold" href="/sign-in">
-                {" "}
-                se connecter
-              </Link>
-            </p>
+    <Page>
+      <div className="h-full flex flex-col">
+        <div className=" flex flex-col grow items-center bg-gradient-to-b from-gray-100 to-gray-500  ">
+          <div className=" py-10">
+            <ImageSrc src="/logo/logo-nounous.png" className="w-48 h-15" />
           </div>
-          {/* {errors.length ? (
+          <div>
+            <div className="text-center">
+              <h1 className="text-center text-4xl font-bold mb-5  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-900 ">
+                Sign-Up
+              </h1>
+              <p>
+                deja inscrit?{" "}
+                <Link className="hover:underline font-bold" href="/sign-in">
+                  {" "}
+                  se connecter
+                </Link>
+              </p>
+            </div>
+            {/* {errors.length ? (
             <div className="rounded-lg border-4 border-red-600 mb-4 flex flex-col gap-4 p-4">
               {errors.map((error) => (
                 <p key={error}>{error}</p>
@@ -102,151 +104,152 @@ const SignUp = () => {
             </div>
           ) : null} */}
 
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {(formik) => (
-              <Form>
-                <div className="flex flex-col">
-                  <label>Email *:</label>
-                  <Field
-                    type="email"
-                    name="email"
-                    className="border-2 border-black px-2 rounded"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label>Username *:</label>
-                  <Field
-                    type="text"
-                    name="username"
-                    className="border-2 border-black px-2 rounded "
-                  />
-                  <ErrorMessage
-                    name="username"
-                    component="small"
-                    className="text-red-600 "
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label>telephone *:</label>
-                  <Field
-                    type="text"
-                    name="telephone"
-                    className="border-2 border-black px-2 rounded"
-                  />
-                  <ErrorMessage
-                    name="telephone"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label>Mot de passe *:</label>
-                  <div className="flex items-center justify-between border-2  border-black rounded bg-white">
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {(formik) => (
+                <Form>
+                  <div className="flex flex-col">
+                    <label>Email *:</label>
                     <Field
-                      type={visible ? "text" : "password"}
+                      type="email"
+                      name="email"
+                      className="border-2 border-black px-2 rounded"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="small"
+                      className="text-red-600"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label>Username *:</label>
+                    <Field
+                      type="text"
+                      name="username"
+                      className="border-2 border-black px-2 rounded "
+                    />
+                    <ErrorMessage
+                      name="username"
+                      component="small"
+                      className="text-red-600 "
+                    />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label>telephone *:</label>
+                    <Field
+                      type="text"
+                      name="telephone"
+                      className="border-2 border-black px-2 rounded"
+                    />
+                    <ErrorMessage
+                      name="telephone"
+                      component="small"
+                      className="text-red-600"
+                    />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label>Mot de passe *:</label>
+                    <div className="flex items-center justify-between border-2  border-black rounded bg-white">
+                      <Field
+                        type={visible ? "text" : "password"}
+                        name="password"
+                        className=" px-2"
+                      />
+                      {visible ? (
+                        <span onClick={handleVisionOff}>
+                          <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
+                        </span>
+                      ) : (
+                        <span onClick={handleVisionOn}>
+                          <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
+                        </span>
+                      )}
+                    </div>
+                    <ErrorMessage
                       name="password"
-                      className=" px-2"
+                      component="small"
+                      className="text-red-600"
                     />
-                    {visible ? (
-                      <span onClick={handleVisionOff}>
-                        <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
-                      </span>
-                    ) : (
-                      <span onClick={handleVisionOn}>
-                        <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
-                      </span>
-                    )}
                   </div>
-                  <ErrorMessage
-                    name="password"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
 
-                <div className="flex flex-col">
-                  <label>Confirmer le mot de passe *:</label>
-                  <div className="flex items-center justify-between border-2 border-black rounded bg-white">
-                    <Field
-                      type={visible1 ? "text" : "password"}
+                  <div className="flex flex-col">
+                    <label>Confirmer le mot de passe *:</label>
+                    <div className="flex items-center justify-between border-2 border-black rounded bg-white">
+                      <Field
+                        type={visible1 ? "text" : "password"}
+                        name="confirmPassword"
+                        className=" px-2"
+                      />
+                      {visible1 ? (
+                        <span onClick={handleVisionOff1}>
+                          <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
+                        </span>
+                      ) : (
+                        <span onClick={handleVisionOn1}>
+                          <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer " />
+                        </span>
+                      )}
+                    </div>
+                    <ErrorMessage
                       name="confirmPassword"
-                      className=" px-2"
+                      component="small"
+                      className="text-red-600"
                     />
-                    {visible1 ? (
-                      <span onClick={handleVisionOff1}>
-                        <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
-                      </span>
-                    ) : (
-                      <span onClick={handleVisionOn1}>
-                        <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer " />
-                      </span>
-                    )}
                   </div>
-                  <ErrorMessage
-                    name="confirmPassword"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
 
-                <div className="flex flex-col">
-                  <div>
-                    <Field
+                  <div className="flex flex-col">
+                    <div>
+                      <Field
+                        name="acceptTerms"
+                        type="checkbox"
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">
+                        J'ai lu et j'accepte
+                        <span className="underline decoration-solid">
+                          <button
+                            className="underline pl-1"
+                            onClick={handleClick}
+                          >
+                            les conditions d'utilisation
+                          </button>
+                        </span>
+                        <span>*</span>
+                      </label>
+                    </div>
+                    <ErrorMessage
                       name="acceptTerms"
-                      type="checkbox"
-                      className="form-check-input"
+                      component="small"
+                      className="text-red-600"
                     />
-                    <label className="form-check-label">
-                      J'ai lu et j'accepte
-                      <span className="underline decoration-solid">
-                        <button
-                          className="underline pl-1"
-                          onClick={handleClick}
-                        >
-                          les conditions d'utilisation
-                        </button>
-                      </span>
-                      <span>*</span>
-                    </label>
+                    <p className="text-sm"> * champs obligatoire</p>
                   </div>
-                  <ErrorMessage
-                    name="acceptTerms"
-                    component="small"
-                    className="text-red-600"
-                  />
-                  <p className="text-sm"> * champs obligatoire</p>
-                </div>
 
-                <div className="flex gap-3 my-3">
-                  <button
-                    type="submit"
-                    className="text-center   focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50"
-                    disabled={!formik.isValid || formik.isSubmitted}
-                  >
-                    S'inscrire
-                  </button>
+                  <div className="flex gap-3 my-3">
+                    <button
+                      type="submit"
+                      className="text-center   focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50"
+                      disabled={!formik.isValid || formik.isSubmitted}
+                    >
+                      S'inscrire
+                    </button>
 
-                  <Link href="/" className="hover:underline pt-2">
-                    continue sans inscription
-                  </Link>
-                </div>
-              </Form>
-            )}
-          </Formik>
+                    <Link href="/" className="hover:underline pt-2">
+                      continue sans inscription
+                    </Link>
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </div>
         </div>
       </div>
-    </div>
+    </Page>
   )
 }
 

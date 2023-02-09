@@ -1,12 +1,12 @@
 import React from "react"
 import Page from "../components/Page"
 
-const BookBebe = () => {
+const Satistiques = () => {
   return (
     <Page>
-      <div>livres pour enfants</div>
+      <div>statistiques</div>
     </Page>
   )
 }
 
-export default BookBebe
+export default Satistiques

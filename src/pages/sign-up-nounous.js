@@ -11,6 +11,7 @@ import api from "../services/api"
 import validationSchema from "../components/Validateur"
 import ServicesNounous from "../components/ServicesNounous"
 import ImageSrc from "../components/ImageSrc"
+import Page from "../components/Page"
 // import validationSchema from "@/components/Validateur";
 // import Button from "@/components/Button";
 // import Footer from "@/components/Footer";
@@ -120,28 +121,29 @@ const SignUpNounous = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className=" flex flex-col grow items-center bg-gradient-to-b from-gray-100 to-gray-500  rounded-md border-2 border-indigo-600 ">
-        <div className=" py-10">
-          <ImageSrc src="/logo/logo-nounous.png" className="w-48 h-15" />
-        </div>
-        <div>
-          <div className="text-center">
-            <h1 className="text-center text-4xl font-bold mb-5  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-900 ">
-              Sign-Up Nounous
-            </h1>
-            <p>
-              deja inscrit?{" "}
-              <Link
-                className="hover:underline font-bold"
-                href="/sign-in-nounous"
-              >
-                {" "}
-                se connecter
-              </Link>
-            </p>
+    <Page>
+      <div className=" flex flex-col">
+        <div className=" flex flex-col grow items-center bg-gradient-to-b from-gray-100 to-gray-500  rounded-md border-2 border-indigo-600 ">
+          <div className=" py-10">
+            <ImageSrc src="/logo/logo-nounous.png" className="w-48 h-15" />
           </div>
-          {/* {errors.length ? (
+          <div>
+            <div className="text-center">
+              <h1 className="text-center text-4xl font-bold mb-5  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-900 ">
+                Sign-Up Nounous
+              </h1>
+              <p>
+                deja inscrit?{" "}
+                <Link
+                  className="hover:underline font-bold"
+                  href="/sign-in-nounous"
+                >
+                  {" "}
+                  se connecter
+                </Link>
+              </p>
+            </div>
+            {/* {errors.length ? (
             <div className="rounded-lg border-4 border-red-600 mb-4 flex flex-col gap-4 p-4">
               {errors.map((error) => (
                 <p key={error}>{error}</p>
@@ -149,263 +151,268 @@ const SignUpNounous = () => {
             </div>
           ) : null} */}
 
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {(formik) => (
-              <Form className="flex flex-col gap-3">
-                <div className="flex flex-col">
-                  <label>Email *:</label>
-                  <Field
-                    type="email"
-                    name="email"
-                    className="border-2 border-black px-2 rounded"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label>Username *:</label>
-                  <Field
-                    type="text"
-                    name="username"
-                    className="border-2 border-black px-2 rounded "
-                  />
-                  <ErrorMessage
-                    name="username"
-                    component="small"
-                    className="text-red-600 "
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label>localite *:</label>
-                  <Field
-                    type="text"
-                    name="localite"
-                    className="border-2 border-black px-2 rounded "
-                  />
-                  <ErrorMessage
-                    name="localite"
-                    component="small"
-                    className="text-red-600 "
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label>telephone *:</label>
-                  <Field
-                    type="text"
-                    name="telephone"
-                    className="border-2 border-black px-2 rounded"
-                  />
-                  <ErrorMessage
-                    name="telephone"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label>image *:</label>
-                  <Field
-                    type="file"
-                    name="image"
-                    accept="image/png, image/jpeg"
-                    className="border-2 border-black rounded"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label>situation *:</label>
-
-                  <Field className=" p-1 rounded " as="select" name="type">
-                    <option value="">selectionner votre situation</option>
-                    <option value="Je suis professionnelle de la Petite Enfance">
-                      Je suis professionnelle de la Petite Enfance
-                    </option>
-                    <option value="Je suis étudiante">Je suis étudiante</option>
-                    <option value="Je suis salariée à temps partiel">
-                      Je suis salariée à temps partiel
-                    </option>
-                    <option value="Je suis jeune retraitée">
-                      Je suis jeune retraitée{" "}
-                    </option>
-                    <option value="autre">autre</option>
-                  </Field>
-                </div>
-                {/* kkkkkkkkkkkkkkkkkkkkkk */}
-                <div className="flex flex-col gap-3 ">
-                  <div>selection les services :</div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      value="garde enfant jour"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">garde enfant jour</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="garde enfant nuit"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">garde enfant nuit</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="garde enfant jour et nuit"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">garde enfant jour et nuit</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="recuperer l'enfant de l'ecole"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">recuperer l'enfant de l'ecole</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="soutien scolaire"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">soutien scolaire</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="garde enfant moin de 2 ans"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">garde enfant moin de 2 ans</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="prepare a manger"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">prepare a manger</span>
-                  </div>
-                  <div>
-                    {" "}
-                    <input
-                      type="checkbox"
-                      value="autre"
-                      onChange={hadleChange}
-                    />
-                    <span className="px-2">autre</span>
-                  </div>
-                </div>
-                {/* kkkkkkkkkkkkkkkkkkkkkk */}
-                <div className="flex flex-col">
-                  <label>Mot de passe *:</label>
-                  <div className="flex items-center justify-between border-2  border-black rounded bg-white">
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {(formik) => (
+                <Form className="flex flex-col gap-3">
+                  <div className="flex flex-col">
+                    <label>Email *:</label>
                     <Field
-                      type={visible ? "text" : "password"}
+                      type="email"
+                      name="email"
+                      className="border-2 border-black px-2 rounded"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="small"
+                      className="text-red-600"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label>Username *:</label>
+                    <Field
+                      type="text"
+                      name="username"
+                      className="border-2 border-black px-2 rounded "
+                    />
+                    <ErrorMessage
+                      name="username"
+                      component="small"
+                      className="text-red-600 "
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label>localite *:</label>
+                    <Field
+                      type="text"
+                      name="localite"
+                      className="border-2 border-black px-2 rounded "
+                    />
+                    <ErrorMessage
+                      name="localite"
+                      component="small"
+                      className="text-red-600 "
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label>telephone *:</label>
+                    <Field
+                      type="text"
+                      name="telephone"
+                      className="border-2 border-black px-2 rounded"
+                    />
+                    <ErrorMessage
+                      name="telephone"
+                      component="small"
+                      className="text-red-600"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label>image *:</label>
+                    <Field
+                      type="file"
+                      name="image"
+                      accept="image/png, image/jpeg"
+                      className="border-2 border-black rounded"
+                    />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label>situation *:</label>
+
+                    <Field className=" p-1 rounded " as="select" name="type">
+                      <option value="">selectionner votre situation</option>
+                      <option value="Je suis professionnelle de la Petite Enfance">
+                        Je suis professionnelle de la Petite Enfance
+                      </option>
+                      <option value="Je suis étudiante">
+                        Je suis étudiante
+                      </option>
+                      <option value="Je suis salariée à temps partiel">
+                        Je suis salariée à temps partiel
+                      </option>
+                      <option value="Je suis jeune retraitée">
+                        Je suis jeune retraitée{" "}
+                      </option>
+                      <option value="autre">autre</option>
+                    </Field>
+                  </div>
+                  {/* kkkkkkkkkkkkkkkkkkkkkk */}
+                  <div className="flex flex-col gap-3 ">
+                    <div>selection les services :</div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        value="garde enfant jour"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">garde enfant jour</span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="garde enfant nuit"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">garde enfant nuit</span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="garde enfant jour et nuit"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">garde enfant jour et nuit</span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="recuperer l'enfant de l'ecole"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">
+                        recuperer l'enfant de l'ecole
+                      </span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="soutien scolaire"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">soutien scolaire</span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="garde enfant moin de 2 ans"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">garde enfant moin de 2 ans</span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="prepare a manger"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">prepare a manger</span>
+                    </div>
+                    <div>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        value="autre"
+                        onChange={hadleChange}
+                      />
+                      <span className="px-2">autre</span>
+                    </div>
+                  </div>
+                  {/* kkkkkkkkkkkkkkkkkkkkkk */}
+                  <div className="flex flex-col">
+                    <label>Mot de passe *:</label>
+                    <div className="flex items-center justify-between border-2  border-black rounded bg-white">
+                      <Field
+                        type={visible ? "text" : "password"}
+                        name="password"
+                        className=" px-2"
+                      />
+                      {visible ? (
+                        <span onClick={handleVisionOff}>
+                          <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
+                        </span>
+                      ) : (
+                        <span onClick={handleVisionOn}>
+                          <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
+                        </span>
+                      )}
+                    </div>
+                    <ErrorMessage
                       name="password"
-                      className=" px-2"
+                      component="small"
+                      className="text-red-600"
                     />
-                    {visible ? (
-                      <span onClick={handleVisionOff}>
-                        <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
-                      </span>
-                    ) : (
-                      <span onClick={handleVisionOn}>
-                        <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
-                      </span>
-                    )}
                   </div>
-                  <ErrorMessage
-                    name="password"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label>Confirmer le mot de passe *:</label>
-                  <div className="flex items-center justify-between border-2 border-black rounded bg-white">
-                    <Field
-                      type={visible1 ? "text" : "password"}
+                  <div className="flex flex-col">
+                    <label>Confirmer le mot de passe *:</label>
+                    <div className="flex items-center justify-between border-2 border-black rounded bg-white">
+                      <Field
+                        type={visible1 ? "text" : "password"}
+                        name="confirmPassword"
+                        className=" px-2"
+                      />
+                      {visible1 ? (
+                        <span onClick={handleVisionOff1}>
+                          <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
+                        </span>
+                      ) : (
+                        <span onClick={handleVisionOn1}>
+                          <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer " />
+                        </span>
+                      )}
+                    </div>
+                    <ErrorMessage
                       name="confirmPassword"
-                      className=" px-2"
+                      component="small"
+                      className="text-red-600"
                     />
-                    {visible1 ? (
-                      <span onClick={handleVisionOff1}>
-                        <BiLowVision className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer" />
-                      </span>
-                    ) : (
-                      <span onClick={handleVisionOn1}>
-                        <BiShowAlt className=" w-6 h-6 hover:text-red-600 hover:cursor-pointer " />
-                      </span>
-                    )}
                   </div>
-                  <ErrorMessage
-                    name="confirmPassword"
-                    component="small"
-                    className="text-red-600"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <div>
-                    <Field
+                  <div className="flex flex-col">
+                    <div>
+                      <Field
+                        name="acceptTerms"
+                        type="checkbox"
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">
+                        J'ai lu et j'accepte
+                        <span className="underline decoration-solid">
+                          <button
+                            className="underline pl-1"
+                            // onClick={handleClick}
+                          >
+                            les conditions d'utilisation
+                          </button>
+                        </span>
+                        <span>*</span>
+                      </label>
+                    </div>
+                    <ErrorMessage
                       name="acceptTerms"
-                      type="checkbox"
-                      className="form-check-input"
+                      component="small"
+                      className="text-red-600"
                     />
-                    <label className="form-check-label">
-                      J'ai lu et j'accepte
-                      <span className="underline decoration-solid">
-                        <button
-                          className="underline pl-1"
-                          // onClick={handleClick}
-                        >
-                          les conditions d'utilisation
-                        </button>
-                      </span>
-                      <span>*</span>
-                    </label>
+                    <p className="text-sm"> * champs obligatoire</p>
                   </div>
-                  <ErrorMessage
-                    name="acceptTerms"
-                    component="small"
-                    className="text-red-600"
-                  />
-                  <p className="text-sm"> * champs obligatoire</p>
-                </div>
-                <div className="flex gap-3 my-3">
-                  <button
-                    type="submit"
-                    className="text-center   focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50"
-                    disabled={!formik.isValid || formik.isSubmitted}
-                  >
-                    S'inscrire
-                  </button>
+                  <div className="flex gap-3 my-3">
+                    <button
+                      type="submit"
+                      className="text-center   focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50"
+                      disabled={!formik.isValid || formik.isSubmitted}
+                    >
+                      S'inscrire
+                    </button>
 
-                  <Link href="/home" className="hover:underline pt-2">
-                    continue sans inscription
-                  </Link>
-                </div>
-              </Form>
-            )}
-          </Formik>
+                    <Link href="/home" className="hover:underline pt-2">
+                      continue sans inscription
+                    </Link>
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </div>
         </div>
       </div>
-    </div>
+    </Page>
   )
 }
 
